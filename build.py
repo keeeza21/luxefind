@@ -115,6 +115,9 @@ def page(title, description, current_file, context, body, extra_head=""):
     base_path = "base.css" if context == "root" else "../base.css"
     js_path = "app.js" if context == "root" else "../app.js"
     favicon_path = "assets/favicon.svg" if context == "root" else "../assets/favicon.svg"
+    manifest_path = "manifest.json" if context == "root" else "../manifest.json"
+    apple_icon_path = "assets/apple-touch-icon.png" if context == "root" else "../assets/apple-touch-icon.png"
+    icon192_path = "assets/icon-192.png" if context == "root" else "../assets/icon-192.png"
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -126,6 +129,13 @@ def page(title, description, current_file, context, body, extra_head=""):
   <meta property="og:description" content="{description}" />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="{favicon_path}" />
+  <link rel="manifest" href="{manifest_path}" />
+  <link rel="apple-touch-icon" href="{apple_icon_path}" />
+  <link rel="icon" type="image/png" sizes="192x192" href="{icon192_path}" />
+  <meta name="theme-color" content="#211d16" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="LuxeFind" />
   <link rel="preconnect" href="https://api.fontshare.com" />
   {FONT_LINK}
   <link rel="stylesheet" href="{base_path}" />
